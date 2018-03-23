@@ -47,40 +47,57 @@
 //
 
 import React from 'react'
+import Loading from 'components/Loading/Loading';
+import Bundle from './Bundle';
 import {
     BrowserRouter as Router,
     Route,
     Switch,
     Link
 } from 'react-router-dom'
-import PerceptionQingpu from '../pages/perception-qingpu/perception-qingpu';
+import PerceptionQingpu from 'bundle-loader?lazy!../pages/qinpu/perception-qingpu/perception-qingpu';
 import PageRoute from '../pages/page.routes';
+import QueueAnim from 'rc-queue-anim';
 
 let routes = [{ path: '/',  component: PerceptionQingpu}]
 routes=routes.concat(PageRoute);
 
-// const createComponent = (component) => (props) => (
-//     <Bundle load={component}>
-//         {
-//             (Component) => Component ? <Component {...props} /> : <Loading/>
-//         }
-//     </Bundle>
-// );
+
+const createComponent = (component) => (props) => (
+    <Bundle load={component}>
+        {
+            (Component) => Component ?<Component {...props} /> :<Loading/>
+        }
+    </Bundle>
+);
 
 // wrap <Route> and use this everywhere instead, then when
 // sub routes are added to any route it'll work
+// const RouteWithSubRoutes = (route) => (
+//     <Route exact path={route.path} render={props => (
+//         // pass the sub-routes down to keep nesting
+//         <route.component {...props} routes={route.routes}/>
+//     )}/>
+// )
 const RouteWithSubRoutes = (route) => (
-    <Route exact path={route.path} render={props => (
-        // pass the sub-routes down to keep nesting
-        <route.component {...props} routes={route.routes}/>
-    )}/>
+        <Route exact path={route.path} component={createComponent(route.component)}/>
+
 )
+
+// const RouteWithSubRoutes = (route) => (
+//         <Route exact path={route.path} render={()=>(
+//             <QueueAnim delay={300} className="queue-simple">
+//                 <h1 key={'a'}>11111111</h1>
+//                 <h1 key={'b'}>11111111</h1>
+//             </QueueAnim>
+//         )}/>
+// )
 const RouteConfig = () => (
-    <div>{
-        routes.map((route, i) => (
+    <div>
+        {routes.map((route, i) => (
             <RouteWithSubRoutes key={i} {...route}/>
-        ))
-    }</div>
+        ))}
+    </div>
 )
 
 export default RouteConfig
