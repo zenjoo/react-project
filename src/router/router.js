@@ -59,6 +59,12 @@ import PerceptionQingpu from 'bundle-loader?lazy!../pages/qinpu/perception-qingp
 import PageRoute from '../pages/page.routes';
 import QueueAnim from 'rc-queue-anim';
 
+const NoMatch = ({ location }) => (
+    <div>
+        <h3>No match for <code>{location.pathname}</code></h3>
+    </div>
+)
+
 let routes = [{ path: '/',  component: PerceptionQingpu}]
 routes=routes.concat(PageRoute);
 
