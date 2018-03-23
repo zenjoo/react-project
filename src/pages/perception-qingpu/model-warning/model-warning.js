@@ -4,9 +4,11 @@ const Search = Input.Search;
 import './model-warning.less'
 import ModelPopupWarning from './model-popup-warning/model-popup-warning'
 import ModelChart from './model-chart/model-chart'
-import { Modal, Button } from 'antd';
 import HighchartsMore from 'highcharts/highcharts-more';
+import SolidGauge from 'highcharts/modules/solid-gauge';
 HighchartsMore(Highcharts)
+SolidGauge(Highcharts)
+import { Modal, Button } from 'antd';
 export default class  ModelWarning extends Component{
     constructor(props) {
         super(props);
@@ -87,27 +89,18 @@ export default class  ModelWarning extends Component{
     // 绘制柱状图
     _colume(){
         console.log(Highcharts.getOptions().colors)
-        // Highcharts.getOptions().colors = Highcharts.map(["#009FEB", "#E91F1F"], function (color) {
-        //     if(color=='#009FEB'){
-        //         return {
-        //             linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
-        //             stops: [
-        //                 [0, 'RGBA(227, 0, 0, 1)'],
-        //                 [1, 'RGBA(9, 170, 245, 1)']
-        //             ]
-        //         };
-        //     }else{
-        //         return {
-        //             linearGradient: { x1: 0, x2: 0, y1: 1, y2: 1 },
-        //             stops: [
-        //                 [0, '#ccc',],
-        //                 [1, '#ccc'], // darken
-        //             ]
-        //         };
-        //     }
-        //     console.log(Highcharts.Color(color).brighten(-0.3).get('rgb'))
-        //
-        // });
+        Highcharts.getOptions().colors = Highcharts.map(["#009FEB", "#E91F1F"], function (color) {
+            return {
+                linearGradient: { x1: 0, x2: 1, y1: 0, y2: 0 },
+                stops: [
+                    [0, '#09AAF5'],
+                   // [0.5, '#09AAF5'],
+                    [1, '#E30000']
+                ]
+            };
+            console.log(Highcharts.Color(color).brighten(-0.3).get('rgb'))
+
+        });
         // 图表配置
         var options = {
             colors:{
@@ -253,7 +246,10 @@ export default class  ModelWarning extends Component{
                     </div>
                     <div id='warning-colume' className='home-chars'></div>
                 </div>
-                <ModelChart/>
+                <div className='chart'>
+                    <div id='warning-colume222' className='home-chars'></div>
+                </div>
+
                 {/* 单位详情弹框 */}
                 <Modal
                     title="Basic Modal"
@@ -265,6 +261,5 @@ export default class  ModelWarning extends Component{
                 </Modal>
 
             </div>
-
         )}
 }
