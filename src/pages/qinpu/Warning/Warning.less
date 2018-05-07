@@ -58,7 +58,7 @@ ol, ul, dl {
       width:4.69rem;
       height:3.02rem;
       padding: 0 .1rem;
-      float: left;
+      //float: left;
     }
     .police-waring{
       margin-right:.04rem;
@@ -145,7 +145,7 @@ ol, ul, dl {
       color: #fff;
       font-size: .07rem;
       padding: .07rem 0 0rem;
-      overflow: scroll;
+      overflow-y: scroll;
       >li{
         margin-bottom:.02rem;
         position: relative;
@@ -172,6 +172,9 @@ ol, ul, dl {
           font-size: .07rem;
         }
       }
+    }
+    .info-item::-webkit-scrollbar {
+      display: none;
     }
 
   }

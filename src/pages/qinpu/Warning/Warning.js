@@ -130,6 +130,9 @@ class Waring extends Component {
                     [1, '#3366AA']
                 ]
             },
+            credits: {
+                enabled:false
+            },
             chart: {
                 type: 'column'
             },
@@ -229,6 +232,9 @@ class Waring extends Component {
                     [1, '#3366AA']
                 ]
             },
+            credits: {
+                enabled:false
+            },
             chart: {
                 polar: true,
                 type: 'line'
@@ -288,6 +294,9 @@ class Waring extends Component {
                     [0, '#003399'],
                     [1, '#3366AA']
                 ]
+            },
+            credits: {
+                enabled:false
             },
             chart: {
                 plotBackgroundColor: null,
@@ -384,7 +393,7 @@ class Waring extends Component {
             <div className='warning'>
                 <Nav index='2'></Nav>
                 <div className="waring-list">
-                    <section className="search-section clearfix ">
+                    <section className="search-section flex ">
                         <div className="police-waring   shandow">
                             <div className='jiao'>
                                 <div className='top'></div>

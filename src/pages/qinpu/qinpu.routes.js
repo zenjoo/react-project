@@ -6,6 +6,7 @@ import WaringRoute from './warning/warning.routes';
 import ManCarRoutes from './man-car-control/man-car.routes';
 import QueryIndexRoutes from './query-index/query-index.routes';
 import StatisticalRoutes from './statistical-analysis/statisical-analysis.routes';
+import Test from './test/test.routes';
 
 
 let PerceptionQingpuRoutes = [
@@ -22,7 +23,8 @@ PerceptionQingpuRoutes=PerceptionQingpuRoutes.concat(
     WaringRoute,
     ManCarRoutes,
     QueryIndexRoutes,
-    StatisticalRoutes
+    StatisticalRoutes,
+    Test
 );
 console.log(PerceptionQingpuRoutes)
 
